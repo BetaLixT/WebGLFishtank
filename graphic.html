@@ -1,0 +1,58 @@
+<script id="vertex-shader-body" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vVertexColor;
+
+uniform mat4 mWorld;
+uniform mat4 mView;
+uniform mat4 mProj;
+
+uniform mat4 vtranslation;
+uniform mat4 vSpawn;
+uniform mat4 vScale;
+
+varying vec4 vColor;
+
+void main()
+{
+	gl_Position =    mWorld * vSpawn * vtranslation * vScale *  vPosition;
+	
+	vColor = vVertexColor;
+}
+</script>
+
+<script id="fragment-shader-body" type="x-shader/x-fragment">
+
+precision mediump float;
+varying vec4 vColor;
+
+void main()
+{
+	gl_FragColor = vColor;
+}
+</script>
+
+<h1>CSCI 336 Assignment 2: Fish Tank</h1>
+<p>Mouse down on canvas will spawn a fish, move the mouse while mouse down to<p>
+<p>drag fish and mouse up to release and let the fish move.</p>
+<canvas id="gl-canvas" width="720" height="720">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+<p>Roatate Camera Z axis:</p>
+<input type="range" min="0" max="180" value="0" class="slider" id="angleSlider">
+</br>
+<script type="text/javascript" src="dependencies/webgl-utils.js"></script>
+<script type="text/javascript" src="src/vertMatrix.js"></script>
+<script type="text/javascript" src="src/3DSwimingFish.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+<div class="slidecontainer">
+ 
+</div>
+</html>
+</body>
